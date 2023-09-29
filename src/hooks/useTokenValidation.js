@@ -18,7 +18,12 @@ function useTokenValidation() {
     }
   }, []); // Run this effect only once when the component mounts
 
-  return { isLoggedIn, token: Cookies.get("token") };
+  return {
+    isLoggedIn,
+    token: Cookies.get("token"),
+    username: Cookies.get("username"),
+    user_id: Cookies.get("user_id"),
+  };
 }
 
 export default useTokenValidation;

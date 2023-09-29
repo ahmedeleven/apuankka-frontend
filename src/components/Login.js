@@ -23,12 +23,15 @@ const Login = ({ setIsLoggedIn }) => {
       .then((response) => {
         // If the login is successful, backend should return a token.
         const token = response.data.token;
+        const user_id = response.data.user_id;
 
         // Update the state to indicate that the user is logged in
         setIsLoggedIn(true);
 
         // Store the token in a cookie
         Cookies.set("token", token, { expires: 7 }); // 'expires' defines the cookie's expiration in days
+        Cookies.set("username", username, { expires: 7 }); // 'expires' defines the cookie's expiration in days
+        Cookies.set("user_id", user_id, { expires: 7 }); // 'expires' defines the cookie's expiration in days
       })
       .catch((error) => {
         // Handle login error

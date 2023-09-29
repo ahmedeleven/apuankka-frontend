@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import useTokenValidation from "../hooks/useTokenValidation";
 import axios from "axios";
 import { API_BASE_URL } from "../config/config";
+import { useParams } from "react-router-dom";
 
-function ServicesList() {
+function ServicesItem() {
   const { isLoggedIn, token, username, user_id } = useTokenValidation();
 
-  const [services, setServices] = useState([]);
+  const [service, setService] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { service_id } = useParams();
 
-  const getServices = () => {
+  const getService = () => {
     const api = axios.create({
       baseURL: API_BASE_URL,
     });
@@ -17,9 +19,9 @@ function ServicesList() {
     api.defaults.headers.common["Authorization"] = `Token ${token}`;
 
     api
-      .get("services/")
+      .get(`services/${service_id}/`)
       .then((response) => {
-        setServices(response.data);
+        setService(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -29,7 +31,7 @@ function ServicesList() {
   };
 
   useEffect(() => {
-    getServices();
+    getService();
   }, []);
 
   return (
@@ -38,15 +40,13 @@ function ServicesList() {
         isLoading ? (
           <p>Loading...</p>
         ) : (
-          services.map((service) => (
-            <div className="card text-center mb-3" key={service.id}>
-              <div className="card-header">{service.title}</div>
-              <div className="card-body">
-                <p className="card-text">{service.description}</p>
-              </div>
-              <div className="card-footer text-muted">Date: {service.date}</div>
+          <div className="card text-center mb-3" key={service.id}>
+            <div className="card-header">{service.title}</div>
+            <div className="card-body">
+              <p className="card-text">{service.description}</p>
             </div>
-          ))
+            <div className="card-footer text-muted">Date: {service.date}</div>
+          </div>
         )
       ) : (
         <p>Please log in to access this content.</p>
@@ -55,4 +55,4 @@ function ServicesList() {
   );
 }
 
-export default ServicesList;
+export default ServicesItem;

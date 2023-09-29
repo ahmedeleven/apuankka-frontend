@@ -30,11 +30,14 @@ const Register = ({ setIsLoggedIn }) => {
       .post("register/", credentials)
       .then((response) => {
         const token = response.data.token;
+        const user_id = response.data.user_id;
 
         // Update the state to indicate that the user is logged in
         setIsLoggedIn(true);
 
         Cookies.set("token", token, { expires: 7 }); // 'expires' defines the cookie's expiration in days
+        Cookies.set("username", username, { expires: 7 }); // 'expires' defines the cookie's expiration in days
+        Cookies.set("user_id", user_id, { expires: 7 }); // 'expires' defines the cookie's expiration in days
         navigate("/");
       })
       .catch((error) => {

@@ -3,7 +3,7 @@ import useTokenValidation from "../hooks/useTokenValidation";
 import axios from "axios";
 import { API_BASE_URL } from "../config/config";
 
-function ServicesList() {
+function UserServicesList() {
   const { isLoggedIn, token, username, user_id } = useTokenValidation();
 
   const [services, setServices] = useState([]);
@@ -17,7 +17,7 @@ function ServicesList() {
     api.defaults.headers.common["Authorization"] = `Token ${token}`;
 
     api
-      .get("services/")
+      .get(`services/user/${user_id}/`)
       .then((response) => {
         setServices(response.data);
         setIsLoading(false);
@@ -55,4 +55,4 @@ function ServicesList() {
   );
 }
 
-export default ServicesList;
+export default UserServicesList;
