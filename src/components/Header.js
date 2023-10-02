@@ -1,63 +1,109 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useTokenValidation from "../hooks/useTokenValidation";
 
 const Header = ({ logout, isLoggedIn }) => {
   const navigate = useNavigate();
+  const { token, username, user_id } = useTokenValidation();
   return (
-    <div className="row">
-      <div className="col-md-12">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container">
-            <a className="navbar-brand" href="/">
-              <strong>Apuankka</strong>
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link" href="/">
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/about">
-                    About
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/contact">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-
-              {isLoggedIn ? (
-                <button className="btn btn-danger" onClick={logout}>
-                  Log Out
-                </button>
-              ) : (
-                <button
-                  className="btn btn-primary"
-                  onClick={() => navigate("/register")}
-                >
-                  Sign Up
-                </button>
-              )}
-            </div>
+    <header className="navbar-light fixed-top header-static bg-mode">
+      <nav className="navbar navbar-expand-lg">
+        <div className="container">
+          <a className="navbar-brand text-secondary" href="/">
+            <strong>Apuankka</strong>
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link text-secondary" href="/">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-secondary" href="/about">
+                  About
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-secondary" href="/contact">
+                  Contact
+                </a>
+              </li>
+            </ul>
           </div>
-        </nav>
-      </div>
-    </div>
+
+          <ul className="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+            {isLoggedIn ? (
+              <li className="nav-item ms-2 dropdown">
+                <a
+                  className="nav-link btn icon-md p-0"
+                  href="#"
+                  id="profileDropdown"
+                  role="button"
+                  data-bs-auto-close="outside"
+                  data-bs-display="static"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    className="avatar-img rounded-2"
+                    src="assets/images/avatar/profile.jpg"
+                    alt=""
+                  />
+                </a>
+
+                <ul
+                  className="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3"
+                  aria-labelledby="profileDropdown"
+                >
+                  <li className="px-3">
+                    <div className="d-flex align-items-center position-relative">
+                      <div className="avatar me-3">
+                        <img
+                          className="avatar-img rounded-circle"
+                          src="assets/images/avatar/profile.jpg"
+                          alt="avatar"
+                        />
+                      </div>
+                      <div>
+                        <a className="h6 stretched-link" href="#">
+                          {username}
+                        </a>
+                        <p className="small m-0">Web Developer</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="dropdown-divider"></li>
+                  <li>
+                    <a
+                      className="dropdown-item bg-danger-soft-hover"
+                      onClick={logout}
+                    >
+                      <i className="bi bi-power fa-fw me-2"></i>Sign Out
+                    </a>
+                  </li>
+                  <li>
+                    {" "}
+                    <hr className="dropdown-divider" />
+                  </li>
+                </ul>
+              </li>
+            ) : null}
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 };
 

@@ -36,76 +36,72 @@ function App() {
 
   return (
     <Router>
-      <div className="container-fluid">
-        {/* Header */}
-        <Header logout={logout} isLoggedIn={isLoggedIn} />
-
-        <div className="row">
-          {isLoggedIn && (
-            <div className="col-md-3">
-              {/* Sidebar */}
-              <Sidebar isLoggedIn={isLoggedIn} />
+      {/* Header */}
+      <Header logout={logout} isLoggedIn={isLoggedIn} />
+      <main>
+        <div className="container">
+          <div className="row g-4">
+            {isLoggedIn && (
+              <div className="col-lg-3">
+                {/* Sidebar */}
+                <Sidebar isLoggedIn={isLoggedIn} />
+              </div>
+            )}
+            <div className={`col-lg-${isLoggedIn ? "9" : "12"}`}>
+              <Routes>
+                <Route
+                  path="/login"
+                  element={<Login setIsLoggedIn={setIsLoggedIn} />}
+                />
+                <Route
+                  path="/register"
+                  element={<Register setIsLoggedIn={setIsLoggedIn} />}
+                />
+                <Route
+                  path="/services"
+                  element={
+                    isLoggedIn ? (
+                      <ServicesList />
+                    ) : (
+                      <Login setIsLoggedIn={setIsLoggedIn} />
+                    )
+                  }
+                />
+                <Route
+                  path="/services/:service_id"
+                  element={
+                    isLoggedIn ? (
+                      <ServicesItem />
+                    ) : (
+                      <Login setIsLoggedIn={setIsLoggedIn} />
+                    )
+                  }
+                />
+                <Route
+                  path="/my-services"
+                  element={
+                    isLoggedIn ? (
+                      <UserServicesList />
+                    ) : (
+                      <Login setIsLoggedIn={setIsLoggedIn} />
+                    )
+                  }
+                />
+                <Route
+                  index
+                  element={
+                    isLoggedIn ? (
+                      <ServicesList />
+                    ) : (
+                      <Login setIsLoggedIn={setIsLoggedIn} />
+                    )
+                  }
+                />
+              </Routes>
             </div>
-          )}
-          <div
-            className={`col-md-${isLoggedIn ? "9" : "12"}`}
-            style={{
-              padding: "20px", // Add padding for better spacing
-            }}
-          >
-            <Routes>
-              <Route
-                path="/login"
-                element={<Login setIsLoggedIn={setIsLoggedIn} />}
-              />
-              <Route
-                path="/register"
-                element={<Register setIsLoggedIn={setIsLoggedIn} />}
-              />
-              <Route
-                path="/services"
-                element={
-                  isLoggedIn ? (
-                    <ServicesList />
-                  ) : (
-                    <Login setIsLoggedIn={setIsLoggedIn} />
-                  )
-                }
-              />
-              <Route
-                path="/services/:service_id"
-                element={
-                  isLoggedIn ? (
-                    <ServicesItem />
-                  ) : (
-                    <Login setIsLoggedIn={setIsLoggedIn} />
-                  )
-                }
-              />
-              <Route
-                path="/my-services"
-                element={
-                  isLoggedIn ? (
-                    <UserServicesList />
-                  ) : (
-                    <Login setIsLoggedIn={setIsLoggedIn} />
-                  )
-                }
-              />
-              <Route
-                index
-                element={
-                  isLoggedIn ? (
-                    <ServicesList />
-                  ) : (
-                    <Login setIsLoggedIn={setIsLoggedIn} />
-                  )
-                }
-              />
-            </Routes>
           </div>
         </div>
-      </div>
+      </main>
     </Router>
   );
 }
