@@ -6,7 +6,7 @@ import { API_BASE_URL } from "../config/config";
 
 // Define userProfile as a constant with an initial value of null
 const DEFAULT_USER_PROFILE = {
-  profile_picture: null,
+  profile_picture: "assets/images/avatar/profile.jpg",
 };
 
 const Sidebar = ({ isLoggedIn }) => {
@@ -32,7 +32,9 @@ const Sidebar = ({ isLoggedIn }) => {
 
         // Initialize userProfile after userData is fetched
         setUserProfile({
-          profile_picture: response.data.profile.profile_picture_url,
+          profile_picture:
+            response.data.profile?.profile_picture_url ||
+            "assets/images/avatar/profile.jpg",
         });
 
         setIsLoading(false);
@@ -80,7 +82,9 @@ const Sidebar = ({ isLoggedIn }) => {
       .then((response) => {
         // Update the user profile with the new profile picture
         setUserProfile({
-          profile_picture: response.data.user.profile_picture_url,
+          profile_picture:
+            response.data.user.profile_picture_url ||
+            "assets/images/avatar/profile.jpg",
         });
         //console.log(response.data);
       })

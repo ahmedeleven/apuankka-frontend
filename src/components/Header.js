@@ -61,7 +61,7 @@ const Header = ({ logout, isLoggedIn }) => {
                   <img
                     className="avatar-img rounded-2"
                     src={
-                      currentUserData?.profile.profile_picture_url
+                      currentUserData?.profile?.profile_picture_url
                         ? currentUserData.profile.profile_picture_url
                         : "assets/images/avatar/profile.jpg"
                     }
@@ -79,7 +79,7 @@ const Header = ({ logout, isLoggedIn }) => {
                         <img
                           className="avatar-img rounded-circle"
                           src={
-                            currentUserData?.profile.profile_picture_url
+                            currentUserData?.profile?.profile_picture_url
                               ? currentUserData.profile.profile_picture_url
                               : "assets/images/avatar/profile.jpg"
                           }
