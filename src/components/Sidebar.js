@@ -197,6 +197,18 @@ const Sidebar = ({ isLoggedIn }) => {
                     <span>My Services </span>
                   </Link>
                 </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/services/available">
+                    {" "}
+                    <img
+                      className="me-2 h-20px fa-fw"
+                      src="assets/images/icon/person-outline-filled.svg"
+                      alt=""
+                    />
+                    <span>Available </span>
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="card-footer text-center py-2"></div>

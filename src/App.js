@@ -15,6 +15,7 @@ import Register from "./components/Register";
 import Sidebar from "./components/Sidebar";
 import UserServicesList from "./components/UserServicesList";
 import ServicesItem from "./components/ServicesItem";
+import ServicesAvailableList from "./components/ServicesAvailableList";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -82,6 +83,16 @@ function App() {
                   element={
                     isLoggedIn ? (
                       <UserServicesList />
+                    ) : (
+                      <Login setIsLoggedIn={setIsLoggedIn} />
+                    )
+                  }
+                />
+                <Route
+                  path="/services/available"
+                  element={
+                    isLoggedIn ? (
+                      <ServicesAvailableList />
                     ) : (
                       <Login setIsLoggedIn={setIsLoggedIn} />
                     )

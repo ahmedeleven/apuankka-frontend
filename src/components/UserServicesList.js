@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import useTokenValidation from "../hooks/useTokenValidation";
 import axios from "axios";
 import { API_BASE_URL } from "../config/config";
+import { Link } from "react-router-dom";
 
 function UserServicesList() {
   const { isLoggedIn, token, username, user_id } = useTokenValidation();
@@ -46,13 +47,19 @@ function UserServicesList() {
                     <div className="avatar avatar-story me-2">
                       <img
                         className="avatar-img rounded-circle"
-                        src="/assets/images/avatar/profile.jpg"
+                        src={
+                          service.user.profile.profile_picture_url
+                            ? service.user.profile.profile_picture_url
+                            : "assets/images/avatar/profile.jpg"
+                        }
                         alt="avt"
                       />
                     </div>
                     <div>
                       <div className="nav nav-divider">
-                        <h6 className="nav-item card-title mb-0">{username}</h6>
+                        <h6 className="nav-item card-title mb-0">
+                          {service.user.username}
+                        </h6>
                         <span className="nav-item small"> {service.date}</span>
                       </div>
                       <p className="mb-0 small">{service.title}</p>
@@ -66,6 +73,19 @@ function UserServicesList() {
               <hr />
               <div className="card-footer border-0 pt-0">
                 <ul className="nav nav-stack small">
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      to={`/services/${service.id}`}
+                      data-bs-container="body"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                    >
+                      {" "}
+                      <i className="bi bi-arrow-up-right-circle-fill pe-1"></i>
+                      View
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <a
                       className="nav-link active"

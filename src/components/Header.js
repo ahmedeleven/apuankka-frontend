@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useTokenValidation from "../hooks/useTokenValidation";
+import useCurrentUserData from "../hooks/useCurrentUserData";
 
 const Header = ({ logout, isLoggedIn }) => {
   const navigate = useNavigate();
   const { token, username, user_id } = useTokenValidation();
+  const { currentUserData } = useCurrentUserData();
   return (
     <header className="navbar-light fixed-top header-static bg-mode">
       <nav className="navbar navbar-expand-lg">
@@ -58,7 +60,11 @@ const Header = ({ logout, isLoggedIn }) => {
                 >
                   <img
                     className="avatar-img rounded-2"
-                    src="assets/images/avatar/profile.jpg"
+                    src={
+                      currentUserData?.profile.profile_picture_url
+                        ? currentUserData.profile.profile_picture_url
+                        : "assets/images/avatar/profile.jpg"
+                    }
                     alt=""
                   />
                 </a>
@@ -72,7 +78,11 @@ const Header = ({ logout, isLoggedIn }) => {
                       <div className="avatar me-3">
                         <img
                           className="avatar-img rounded-circle"
-                          src="assets/images/avatar/profile.jpg"
+                          src={
+                            currentUserData?.profile.profile_picture_url
+                              ? currentUserData.profile.profile_picture_url
+                              : "assets/images/avatar/profile.jpg"
+                          }
                           alt="avatar"
                         />
                       </div>

@@ -4,7 +4,7 @@ import axios from "axios";
 import { API_BASE_URL } from "../config/config";
 import { Link } from "react-router-dom";
 
-function ServicesList() {
+function ServicesAvailableList() {
   const { isLoggedIn, token, username, user_id } = useTokenValidation();
 
   const [services, setServices] = useState([]);
@@ -18,7 +18,7 @@ function ServicesList() {
     api.defaults.headers.common["Authorization"] = `Token ${token}`;
 
     api
-      .get("services/")
+      .get("services/?status=open")
       .then((response) => {
         setServices(response.data);
         setIsLoading(false);
@@ -87,7 +87,6 @@ function ServicesList() {
                       View
                     </Link>
                   </li>
-
                   <li className="nav-item">
                     <a
                       className="nav-link active"
@@ -126,4 +125,4 @@ function ServicesList() {
   );
 }
 
-export default ServicesList;
+export default ServicesAvailableList;
