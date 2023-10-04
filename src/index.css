@@ -117,6 +117,18 @@ header.fixed-top + main {
   margin-bottom: 20px;
 }
 
+.card-interest {
+  background-color: var(--bs-body-bg);
+  border: 0;
+  margin: 0.8rem;
+  width: 100%;
+}
+
+.avatar-interest {
+  margin-top: 0.8rem;
+  margin-left: 0.8rem;
+}
+
 .mt-n5 {
   margin-top: -3rem !important;
 }
