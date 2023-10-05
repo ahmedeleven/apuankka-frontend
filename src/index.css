@@ -275,7 +275,7 @@ a:hover {
   color: var(--bs-primary);
 }
 
-.success-background {
-  background-color: #4caf50; /* Change this color to the desired success color */
-  /* You can add other styles as needed */
+.navbar-brand img {
+  width: 1.4em;
+  height: 1.4em;
 }

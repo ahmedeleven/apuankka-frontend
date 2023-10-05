@@ -12,7 +12,12 @@ const Header = ({ logout, isLoggedIn }) => {
       <nav className="navbar navbar-expand-lg">
         <div className="container">
           <a className="navbar-brand text-secondary" href="/">
-            <strong>Apuankka</strong>
+            <img
+              src="assets/images/apuankka5.png"
+              alt="Logo"
+              className="navbar-brand-image"
+            />
+            <strong> Apu Ankka</strong>
           </a>
           <button
             className="navbar-toggler"
