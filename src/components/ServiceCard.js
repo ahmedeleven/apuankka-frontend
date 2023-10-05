@@ -70,6 +70,9 @@ function ServiceCard({ service, isViewed }) {
               <p className="mb-0 small"></p>
             </div>
           </div>
+          <span className="mb-3">
+            {service.fee} <i className="bi bi-currency-euro"></i>
+          </span>
         </div>
       </div>
       <div className="card-body">
@@ -129,19 +132,6 @@ function ServiceCard({ service, isViewed }) {
             </a>
           </li>
         ) : null}
-
-        <li className="nav-item dropdown ms-sm-auto">
-          <a
-            className="nav-link mb-0"
-            href="#"
-            id="cardShareAction"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i className="bi bi-reply-fill flip-horizontal ps-1"></i>
-            Share (3)
-          </a>
-        </li>
       </ul>
     </div>
   );

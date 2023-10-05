@@ -252,3 +252,30 @@ a:hover {
   color: var(--bs-dropdown-link-hover-color);
   background-color: var(--bs-dropdown-link-hover-bg);
 }
+
+.nav-link {
+  --bs-nav-link-color: #676a79;
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: var(--bs-nav-link-color);
+  -webkit-transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.nav-link-secondary .nav-item .nav-link {
+  color: var(--bs-gray-800);
+}
+
+.nav-link-secondary .nav-item .nav-link:hover,
+.nav-link-secondary .nav-item .nav-link.active {
+  color: var(--bs-primary);
+}
+
+.success-background {
+  background-color: #4caf50; /* Change this color to the desired success color */
+  /* You can add other styles as needed */
+}
