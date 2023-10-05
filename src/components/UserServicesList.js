@@ -40,7 +40,9 @@ function UserServicesList() {
         isLoading ? (
           <p>Loading...</p>
         ) : (
-          services.map((service) => <ServiceCard service={service} />)
+          services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))
         )
       ) : (
         <p>Please log in to access this content.</p>

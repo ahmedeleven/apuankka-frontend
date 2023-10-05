@@ -71,13 +71,11 @@ function ServicesItem() {
           <div>
             <ServiceCard key={service.id} service={service} isViewed="True" />
             <div className="card">
-              {interests?.message ? (
-                <p>{interests.message}</p>
-              ) : (
-                interests.map((interest) => (
-                  <InterestCard key={interest.user.id} interest={interest} />
-                ))
-              )}
+              {interests?.message
+                ? null
+                : interests.map((interest) => (
+                    <InterestCard key={interest.user.id} interest={interest} />
+                  ))}
             </div>
           </div>
         )

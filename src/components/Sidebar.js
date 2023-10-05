@@ -215,7 +215,11 @@ const Sidebar = ({ isLoggedIn }) => {
                 </li>
               </ul>
             </div>
-            <div className="card-footer text-center py-2"></div>
+            <div className="card-footer text-center py-2">
+              <a className="btn btn-link btn-sm" href="edit-profile.html">
+                Edit Profile{" "}
+              </a>
+            </div>
           </div>
         </div>
       </div>{" "}

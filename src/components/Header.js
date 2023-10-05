@@ -87,12 +87,18 @@ const Header = ({ logout, isLoggedIn }) => {
                         />
                       </div>
                       <div>
-                        <a className="h6 stretched-link" href="#">
+                        <p className="h6 stretched-link" href="#">
                           {username}
-                        </a>
+                        </p>
                         <p className="small m-0">Web Developer</p>
                       </div>
                     </div>
+                    <a
+                      className="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
+                      href="my-profile.html"
+                    >
+                      Edit profile
+                    </a>
                   </li>
                   <li className="dropdown-divider"></li>
                   <li>
@@ -102,10 +108,6 @@ const Header = ({ logout, isLoggedIn }) => {
                     >
                       <i className="bi bi-power fa-fw me-2"></i>Sign Out
                     </a>
-                  </li>
-                  <li>
-                    {" "}
-                    <hr className="dropdown-divider" />
                   </li>
                 </ul>
               </li>

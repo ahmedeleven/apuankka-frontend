@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { API_BASE_URL } from "../config/config";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -41,30 +42,77 @@ const Login = ({ setIsLoggedIn }) => {
 
   return (
     <div className="container mt-5">
-      <h2>Login</h2>
-      <form>
-        <div className="mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow">
+            <div className="card-header">
+              <h1 className="h4 text-secondary font-weight-bold">
+                <strong>Login</strong>
+              </h1>
+            </div>
+            <div className="card-body">
+              <form>
+                <div className="mb-3 input-group">
+                  <span className="input-group-text">
+                    <i className="bi bi-person"></i> {/* User icon */}
+                  </span>
+                  <input
+                    type="text"
+                    id="form-username"
+                    className="form-control"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+
+                <div className="mb-3 input-group">
+                  <span className="input-group-text">
+                    <i className="bi bi-lock"></i> {/* Lock icon */}
+                  </span>
+                  <input
+                    type="password"
+                    id="form-password"
+                    className="form-control"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+
+                <div className="mb-3 form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="form-remember-me"
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="form-remember-me"
+                  >
+                    Remember me
+                  </label>
+                </div>
+
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block mb-3"
+                  onClick={handleLogin}
+                >
+                  Login
+                </button>
+
+                <div className="text-center">
+                  <p>
+                    Not a member? <Link to="/register">Register</Link>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div className="mb-3">
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="button" className="btn btn-primary" onClick={handleLogin}>
-          Login
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

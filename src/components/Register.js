@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { API_BASE_URL } from "../config/config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -48,46 +48,76 @@ const Register = ({ setIsLoggedIn }) => {
 
   return (
     <div className="container mt-5">
-      <h2>Sign Up</h2>
-      <form>
-        <div className="mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          {username}
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow">
+            <div className="card-header">
+              <h1 className="h4 text-secondary font-weight-bold">
+                <strong>Sign Up</strong>
+              </h1>
+            </div>
+            <div className="card-body">
+              <form>
+                <div className="mb-3 input-group">
+                  <span className="input-group-text">
+                    <i className="bi bi-person"></i> {/* User icon */}
+                  </span>
+                  <input
+                    type="text"
+                    id="form-username"
+                    className="form-control"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+
+                <div className="mb-3 input-group">
+                  <span className="input-group-text">
+                    <i className="bi bi-lock"></i> {/* Lock icon */}
+                  </span>
+                  <input
+                    type="password"
+                    id="form-password"
+                    className="form-control"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+
+                <div className="mb-3 input-group">
+                  <span className="input-group-text">
+                    <i className="bi bi-envelope"></i> {/* Email icon */}
+                  </span>
+                  <input
+                    type="text"
+                    id="form-email"
+                    className="form-control"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  className="btn btn-primary btn-block mb-3"
+                  onClick={handleRegister}
+                >
+                  Sign Up
+                </button>
+
+                <div className="text-center">
+                  <p>
+                    Already a member? <Link to="/">Login</Link>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div className="mb-3">
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {password}
-        </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {email}
-        </div>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={handleRegister}
-        >
-          Sign Up
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
