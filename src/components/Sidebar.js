@@ -3,6 +3,8 @@ import useTokenValidation from "../hooks/useTokenValidation";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { API_BASE_URL } from "../config/config";
+import getUserCounts from "../utils/getUserCounts";
+import getGeneralCounts from "../utils/getGeneralCounts";
 
 // Define userProfile as a constant with an initial value of null
 const DEFAULT_USER_PROFILE = {
@@ -16,7 +18,7 @@ const Sidebar = ({ isLoggedIn }) => {
   const [userData, setUserData] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const { username, token } = useTokenValidation();
+  const { user_id, username, token } = useTokenValidation();
 
   const getUserData = () => {
     const api = axios.create({
@@ -94,6 +96,30 @@ const Sidebar = ({ isLoggedIn }) => {
       });
   };
 
+  const [userCounts, setUserCounts] = useState({});
+
+  useEffect(() => {
+    async function fetchData() {
+      const countsData = await getUserCounts(user_id);
+      setUserCounts(countsData);
+      console.log(countsData);
+    }
+
+    fetchData();
+  }, [user_id]);
+
+  const [generalCounts, setGeneralCounts] = useState({});
+
+  useEffect(() => {
+    async function fetchData() {
+      const countsData = await getGeneralCounts();
+      setGeneralCounts(countsData);
+      console.log(countsData);
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg mx-0">
       <div
@@ -160,18 +186,18 @@ const Sidebar = ({ isLoggedIn }) => {
 
                 <div className="hstack gap-2 gap-xl-3 justify-content-center">
                   <div>
-                    <h6 className="mb-0">256</h6>
+                    <h6 className="mb-0">{userCounts.serviceCount}</h6>
                     <small>Requests</small>
                   </div>
                   <div className="vr"></div>
                   <div>
-                    <h6 className="mb-0">2.5K</h6>
+                    <h6 className="mb-0">{userCounts.interestCount}</h6>
                     <small>Interests</small>
                   </div>
                   <div className="vr"></div>
                   <div>
-                    <h6 className="mb-0">365</h6>
-                    <small>Done</small>
+                    <h6 className="mb-0">{userCounts.chosenInterestCount}</h6>
+                    <small>Chosen</small>
                   </div>
                 </div>
               </div>
@@ -187,7 +213,7 @@ const Sidebar = ({ isLoggedIn }) => {
                       src="assets/images/icon/home-outline-filled.svg"
                       alt=""
                     />
-                    <span>Services </span>
+                    <span>Services ({generalCounts.serviceCount})</span>
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -198,7 +224,7 @@ const Sidebar = ({ isLoggedIn }) => {
                       src="assets/images/icon/person-outline-filled.svg"
                       alt=""
                     />
-                    <span>My Services </span>
+                    <span>My Services ({userCounts.serviceCount})</span>
                   </Link>
                 </li>
 
@@ -210,7 +236,9 @@ const Sidebar = ({ isLoggedIn }) => {
                       src="assets/images/icon/person-outline-filled.svg"
                       alt=""
                     />
-                    <span>Available </span>
+                    <span>
+                      Available ({generalCounts.serviceAvailableCount})
+                    </span>
                   </Link>
                 </li>
               </ul>

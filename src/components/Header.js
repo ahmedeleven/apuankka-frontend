@@ -105,6 +105,7 @@ const Header = ({ logout, isLoggedIn }) => {
                     <a
                       className="dropdown-item bg-danger-soft-hover"
                       onClick={logout}
+                      role="button"
                     >
                       <i className="bi bi-power fa-fw me-2"></i>Sign Out
                     </a>
