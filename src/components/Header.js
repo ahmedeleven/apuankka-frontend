@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import useTokenValidation from "../hooks/useTokenValidation";
 import useCurrentUserData from "../hooks/useCurrentUserData";
 
@@ -93,12 +93,12 @@ const Header = ({ logout, isLoggedIn }) => {
                         <p className="small m-0">Web Developer</p>
                       </div>
                     </div>
-                    <a
+                    <Link
                       className="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
-                      href="my-profile.html"
+                      to="/profile/edit"
                     >
                       Edit profile
-                    </a>
+                    </Link>
                   </li>
                   <li className="dropdown-divider"></li>
                   <li>
