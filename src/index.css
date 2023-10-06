@@ -266,6 +266,10 @@ a:hover {
     border-color 0.15s ease-in-out;
 }
 
+.nav-link:hover {
+  --bs-nav-link-hover-color: var(--bs-link-hover-color);
+}
+
 .nav-link-secondary .nav-item .nav-link {
   color: var(--bs-gray-800);
 }
@@ -278,4 +282,16 @@ a:hover {
 .navbar-brand img {
   width: 1.4em;
   height: 1.4em;
+}
+
+.form-control:focus {
+  color: var(--bs-gray-700);
+  border-color: #0f6fec;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.green-border {
+  border: 2px solid #badbcc;
 }

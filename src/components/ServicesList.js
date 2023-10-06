@@ -4,6 +4,7 @@ import axios from "axios";
 import { API_BASE_URL } from "../config/config";
 import { Link } from "react-router-dom";
 import ServiceCard from "./ServiceCard";
+import AddService from "./AddService";
 
 function ServicesList() {
   const { isLoggedIn, token, username, user_id } = useTokenValidation();
@@ -37,13 +38,16 @@ function ServicesList() {
   return (
     <div>
       {isLoggedIn ? (
-        isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))
-        )
+        <div>
+          <AddService />
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            services.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))
+          )}
+        </div>
       ) : (
         <p>Please log in to access this content.</p>
       )}

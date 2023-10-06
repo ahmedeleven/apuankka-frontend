@@ -5,10 +5,11 @@ import axios from "axios";
 import { API_BASE_URL } from "../config/config";
 import handleToggleInterest from "../utils/handleToggleInterest"; // Import the function
 
-function ServiceCard({ service, isViewed }) {
+function ServiceCard({ service, isViewed, successClassName }) {
   const navigate = useNavigate();
   const [isInterested, setIsInterested] = useState(false);
   const current_user_id = Cookies.get("user_id");
+  const cardClassName = `card ${successClassName}`;
 
   useEffect(() => {
     checkInterestStatus();
@@ -44,7 +45,7 @@ function ServiceCard({ service, isViewed }) {
   };
 
   return (
-    <div className="card" key={service.id}>
+    <div className={cardClassName} key={service.id}>
       <div className="card-header card-header border-0 pb-0">
         <div className="d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
@@ -52,7 +53,7 @@ function ServiceCard({ service, isViewed }) {
               <img
                 className="avatar-img rounded-circle"
                 src={
-                  service.user.profile.profile_picture_url
+                  service.user?.profile?.profile_picture_url
                     ? service.user.profile.profile_picture_url
                     : "assets/images/avatar/profile.jpg"
                 }
