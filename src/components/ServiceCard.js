@@ -44,6 +44,19 @@ function ServiceCard({ service, isViewed, successClassName }) {
     navigate(-1);
   };
 
+  function getStatusColorClass(status) {
+    switch (status) {
+      case "open":
+        return "text-success"; // Green color for "Open" status
+      case "done":
+        return "text-primary"; // Blue color for "Done" status
+      case "cancel":
+        return "text-danger"; // Red color for "Cancelled" status
+      default:
+        return ""; // Default color if status doesn't match known values
+    }
+  }
+
   return (
     <div className={cardClassName} key={service.id}>
       <div className="card-header card-header border-0 pb-0">
@@ -133,6 +146,27 @@ function ServiceCard({ service, isViewed, successClassName }) {
             </a>
           </li>
         ) : null}
+
+        {current_user_id != service.user.id ? (
+          <li className="nav-item dropdown ms-sm-auto">
+            <span
+              className={`nav-link mb-0 ${getStatusColorClass(service.status)}`}
+            >
+              <i className="bi bi-clock-fill pe-1"></i>
+              {service.status}
+            </span>
+          </li>
+        ) : (
+          <li className="nav-item dropdown ms-sm-auto">
+            <span
+              className={`nav-link mb-0 ${getStatusColorClass(service.status)}`}
+              role="button"
+            >
+              <i className="bi bi-clock-fill pe-1"></i>
+              {service.status}
+            </span>
+          </li>
+        )}
       </ul>
     </div>
   );
