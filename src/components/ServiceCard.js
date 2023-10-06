@@ -3,13 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { API_BASE_URL } from "../config/config";
-import handleToggleInterest from "../utils/handleToggleInterest"; // Import the function
+import handleToggleInterest from "../utils/handleToggleInterest";
+import useTokenValidation from "../hooks/useTokenValidation";
 
 function ServiceCard({ service, isViewed, successClassName }) {
   const navigate = useNavigate();
   const [isInterested, setIsInterested] = useState(false);
   const current_user_id = Cookies.get("user_id");
   const cardClassName = `card ${successClassName}`;
+  const [statusDropdownOpen, setStatusDropdownOpen] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState(service.status);
+  const { token } = useTokenValidation();
 
   useEffect(() => {
     checkInterestStatus();
@@ -17,7 +21,6 @@ function ServiceCard({ service, isViewed, successClassName }) {
 
   const checkInterestStatus = async () => {
     try {
-      const token = Cookies.get("token");
       const api = axios.create({
         baseURL: API_BASE_URL,
       });
@@ -42,6 +45,28 @@ function ServiceCard({ service, isViewed, successClassName }) {
 
   const handleGoBack = () => {
     navigate(-1);
+  };
+
+  const handleStatusChange = (newStatus) => {
+    const api = axios.create({
+      baseURL: API_BASE_URL,
+    });
+
+    api.defaults.headers.common["Authorization"] = `Token ${token}`;
+
+    api
+      .put(`services/update/${service.id}/`, { status: newStatus })
+      .then((response) => {
+        // Update the status only after a successful response
+        setCurrentStatus(newStatus);
+      })
+      .catch((error) => {
+        console.error("Error updating status:", error);
+      })
+      .finally(() => {
+        // Close the dropdown menu regardless of success or failure
+        setStatusDropdownOpen(false);
+      });
   };
 
   function getStatusColorClass(status) {
@@ -147,20 +172,52 @@ function ServiceCard({ service, isViewed, successClassName }) {
           </li>
         ) : null}
 
-        {current_user_id != service.user.id ? (
+        {current_user_id == service.user.id ? (
           <li className="nav-item dropdown ms-sm-auto">
-            <span
-              className={`nav-link mb-0 ${getStatusColorClass(service.status)}`}
-            >
-              <i className="bi bi-clock-fill pe-1"></i>
-              {service.status}
-            </span>
+            <div className="dropdown">
+              <button
+                className={`btn nav-link mb-0 dropdown-toggle ${getStatusColorClass(
+                  service.status
+                )}`}
+                onClick={() => setStatusDropdownOpen(!statusDropdownOpen)}
+              >
+                <i className="bi bi-clock-fill pe-1"></i>
+                {currentStatus}
+              </button>
+              {statusDropdownOpen && (
+                <ul className="dropdown-menu show">
+                  <li>
+                    <button
+                      className="dropdown-item"
+                      onClick={() => handleStatusChange("open")}
+                    >
+                      Open
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="dropdown-item"
+                      onClick={() => handleStatusChange("done")}
+                    >
+                      Done
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="dropdown-item"
+                      onClick={() => handleStatusChange("cancel")}
+                    >
+                      Cancelled
+                    </button>
+                  </li>
+                </ul>
+              )}
+            </div>
           </li>
         ) : (
           <li className="nav-item dropdown ms-sm-auto">
             <span
               className={`nav-link mb-0 ${getStatusColorClass(service.status)}`}
-              role="button"
             >
               <i className="bi bi-clock-fill pe-1"></i>
               {service.status}
