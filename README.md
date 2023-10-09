@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Apu Ankka Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Apu Ankka is a web application frontend built with React. It allows users to request and provide simple services to each other while offering a small fee for the services rendered.
 
-## Available Scripts
+![Apu Ankka Logo]
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Features](#features)
+- [Usage](#usage)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+Before you begin, ensure you have met the following requirements:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Node.js:** Make sure you have Node.js installed. You can download it from [nodejs.org](https://nodejs.org/).
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Follow these steps to install and set up the Apu Ankka frontend:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/ahmedeleven/apuankka-frontend.git
+   cd apuankka-frontend
+   ```
 
-### `npm run eject`
+2. Update the API base URL:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Open the `config/config.js` file.
+- Update the following line with the backend URL if it is different from the default:
+  ```javascript
+  export const API_BASE_URL = "http://127.0.0.1:8000/api/";
+  ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-## Learn More
+Now, you should be able to access the Apu Ankka frontend at `http://localhost:3000` in your web browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- User registration and authentication
+- Service request creation
+- Service listing
+- Responsive design for mobile and desktop
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **User Registration:**
 
-### Analyzing the Bundle Size
+- Sign up for an account on the Apu Ankka platform.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **Create a Service Request:**
 
-### Making a Progressive Web App
+- Log in to your account.
+- Click on the "Add Service" button.
+- Fill in the details of the service you need and set a fee.
+- Submit the request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. **Browse and Accept Service Requests:**
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Browse the available service requests on the platform.
+- Select a service you want to provide.
+- Click on the "Interested" button to offer your service.
+- The requester can see the details the users interested in providing help.
+- The requester can choose one or multiple users from the list.
