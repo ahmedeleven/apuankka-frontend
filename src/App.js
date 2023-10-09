@@ -14,9 +14,11 @@ import { API_BASE_URL } from "./config/config";
 import Register from "./components/Register";
 import Sidebar from "./components/Sidebar";
 import UserServicesList from "./components/UserServicesList";
+import UserInterestsList from "./components/UserInterestsList";
 import ServicesItem from "./components/ServicesItem";
 import ServicesAvailableList from "./components/ServicesAvailableList";
 import EditProfile from "./components/EditProfile";
+import Footer from "./components/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -100,6 +102,16 @@ function App() {
                   }
                 />
                 <Route
+                  path="/my-interests"
+                  element={
+                    isLoggedIn ? (
+                      <UserInterestsList />
+                    ) : (
+                      <Login setIsLoggedIn={setIsLoggedIn} />
+                    )
+                  }
+                />
+                <Route
                   path="/services/available"
                   element={
                     isLoggedIn ? (
@@ -124,6 +136,7 @@ function App() {
           </div>
         </div>
       </main>
+      <Footer />
     </Router>
   );
 }

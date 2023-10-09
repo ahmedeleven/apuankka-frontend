@@ -213,7 +213,10 @@ const Sidebar = ({ isLoggedIn }) => {
                       src="assets/images/icon/home-outline-filled.svg"
                       alt=""
                     />
-                    <span>Services ({generalCounts.serviceCount})</span>
+                    <span>
+                      <i className="bi bi-life-preserver"></i> Services (
+                      {generalCounts.serviceCount})
+                    </span>
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -224,7 +227,25 @@ const Sidebar = ({ isLoggedIn }) => {
                       src="assets/images/icon/person-outline-filled.svg"
                       alt=""
                     />
-                    <span>My Services ({userCounts.serviceCount})</span>
+                    <span>
+                      <i className="bi bi-person-raised-hand"></i> My Services (
+                      {userCounts.serviceCount})
+                    </span>
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/my-interests">
+                    {" "}
+                    <img
+                      className="me-2 h-20px fa-fw"
+                      src="assets/images/icon/person-outline-filled.svg"
+                      alt=""
+                    />
+                    <span>
+                      <i className="bi bi-hand-index-thumb-fill"></i> My
+                      Interests ({userCounts.interestCount})
+                    </span>
                   </Link>
                 </li>
 
@@ -237,7 +258,8 @@ const Sidebar = ({ isLoggedIn }) => {
                       alt=""
                     />
                     <span>
-                      Available ({generalCounts.serviceAvailableCount})
+                      <i className="bi bi-flag-fill"></i> Available (
+                      {generalCounts.serviceAvailableCount})
                     </span>
                   </Link>
                 </li>

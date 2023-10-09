@@ -163,9 +163,9 @@ function ServiceCard({ service, isViewed, successClassName }) {
             >
               {" "}
               {isInterested ? (
-                <i className="bi bi-hand-thumbs-up-fill pe-1"></i>
+                <i className="bi bi-hand-index-thumb-fill pe-1"></i>
               ) : (
-                <i className="bi bi-hand-thumbs-up pe-1"></i>
+                <i className="bi bi-hand-index-thumb pe-1"></i>
               )}{" "}
               Interested
             </a>
