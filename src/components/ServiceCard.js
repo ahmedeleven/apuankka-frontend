@@ -35,7 +35,6 @@ function ServiceCard({ service, isViewed, successClassName }) {
 
   const handleInterestClick = async () => {
     try {
-      // Call the imported function
       const newIsInterested = await handleToggleInterest(service.id);
       setIsInterested(newIsInterested);
     } catch (error) {
@@ -57,7 +56,7 @@ function ServiceCard({ service, isViewed, successClassName }) {
     api
       .put(`services/update/${service.id}/`, { status: newStatus })
       .then((response) => {
-        // Update the status only after a successful response
+        // Update the status  after a successful response
         setCurrentStatus(newStatus);
       })
       .catch((error) => {

@@ -45,7 +45,7 @@ const AddService = () => {
       .post(`services/add/`, formData)
       .then((response) => {
         // Handle success
-        console.log("Service requested successfully", response.data);
+        console.log("Service requested successfully");
 
         // Extract the new service data from the response
         const newServiceData = response.data;
@@ -65,34 +65,32 @@ const AddService = () => {
 
         setSuccessClassName("green-border");
 
-        // Reset the success message after a delay (e.g., 3 seconds)
+        // Reset the success message after a delay
         setTimeout(() => {
           setSuccessMessage(null);
           setSuccessClassName("");
-        }, 3000); // Adjust the delay as needed (e.g., 3000 milliseconds = 3 seconds)
+        }, 3000); // Adjust the delay
       })
       .catch((error) => {
         // Handle error
         console.error("Error requesting service", error);
-        // You can add code to handle errors, e.g., show an error message.
       });
   };
 
-  console.log("successClassName:", successClassName);
   return (
     <div>
       <div className="card">
         <div className="card-header card-header border-0 pb-0">
           <div className="d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center">
-              <h1 className="h6">Add Service</h1>
+              <h1 className="h5">Add Service</h1>
             </div>
-            <span className="mb-3" role="button">
+            <span className="mb-3 add-icon" role="button">
               <a className="nav-link" onClick={toggleContent}>
                 {isContentVisible ? (
-                  <i className="bi bi-file-minus-fill"></i>
+                  <i className="bi bi-dash-circle-fill"></i>
                 ) : (
-                  <i className="bi bi-file-plus-fill"></i>
+                  <i className="bi bi-plus-circle-fill"></i>
                 )}
               </a>
             </span>

@@ -40,7 +40,6 @@ const Sidebar = ({ isLoggedIn }) => {
         });
 
         setIsLoading(false);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error("Cannot get services:", error);
@@ -88,7 +87,6 @@ const Sidebar = ({ isLoggedIn }) => {
             response.data.user.profile_picture_url ||
             "assets/images/avatar/profile.jpg",
         });
-        //console.log(response.data);
       })
       .catch((error) => {
         // Handle errors
@@ -102,7 +100,6 @@ const Sidebar = ({ isLoggedIn }) => {
     async function fetchData() {
       const countsData = await getUserCounts(user_id);
       setUserCounts(countsData);
-      console.log(countsData);
     }
 
     fetchData();
@@ -114,7 +111,6 @@ const Sidebar = ({ isLoggedIn }) => {
     async function fetchData() {
       const countsData = await getGeneralCounts();
       setGeneralCounts(countsData);
-      console.log(countsData);
     }
 
     fetchData();

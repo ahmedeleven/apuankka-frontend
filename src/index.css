@@ -295,3 +295,7 @@ a:hover {
 .green-border {
   border: 2px solid #badbcc;
 }
+
+.add-icon {
+  font-size: 2em;
+}

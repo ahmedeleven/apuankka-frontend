@@ -21,7 +21,7 @@ async function handleToggleChosen(service_id, user_id, initialIsChosen) {
     const updateChosenUrl = `interests/service/${service_id}/user/${user_id}/update/`;
 
     // Determine the new value for 'chosen'
-    const newChosenValue = !initialIsChosen; // Use initialIsChosen here
+    const newChosenValue = !initialIsChosen;
 
     const method = "PUT";
 

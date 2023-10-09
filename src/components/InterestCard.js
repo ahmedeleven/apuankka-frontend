@@ -11,13 +11,10 @@ function InterestCard({ interest }) {
 
   const handleToggle = () => {
     // Dynamically toggle between true and false based on the current isChosen state
-    //const newIsChosen = !isChosen;
-    console.log("Toggling to:", isChosen);
 
     // Call handleToggleChosen with the new value
     handleToggleChosen(interest.service_id, interest.user.id, isChosen)
       .then((updatedIsChosen) => {
-        console.log("Updated isChosen:", updatedIsChosen);
         setIsChosen(updatedIsChosen); // Update the state with the new value
       })
       .catch((error) => {

@@ -31,8 +31,8 @@ const Login = ({ setIsLoggedIn }) => {
 
         // Store the token in a cookie
         Cookies.set("token", token, { expires: 7 }); // 'expires' defines the cookie's expiration in days
-        Cookies.set("username", username, { expires: 7 }); // 'expires' defines the cookie's expiration in days
-        Cookies.set("user_id", user_id, { expires: 7 }); // 'expires' defines the cookie's expiration in days
+        Cookies.set("username", username, { expires: 7 });
+        Cookies.set("user_id", user_id, { expires: 7 });
       })
       .catch((error) => {
         // Handle login error
@@ -54,7 +54,7 @@ const Login = ({ setIsLoggedIn }) => {
               <form>
                 <div className="mb-3 input-group">
                   <span className="input-group-text">
-                    <i className="bi bi-person"></i> {/* User icon */}
+                    <i className="bi bi-person"></i>
                   </span>
                   <input
                     type="text"
@@ -68,7 +68,7 @@ const Login = ({ setIsLoggedIn }) => {
 
                 <div className="mb-3 input-group">
                   <span className="input-group-text">
-                    <i className="bi bi-lock"></i> {/* Lock icon */}
+                    <i className="bi bi-lock"></i>
                   </span>
                   <input
                     type="password"

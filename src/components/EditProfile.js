@@ -35,18 +35,17 @@ const EditProfile = () => {
       .put(`profile/${username}/update/`, formData)
       .then((response) => {
         // Handle success
-        console.log("Profile updated successfully", response.data);
+        console.log("Profile updated successfully");
         setSuccessMessage("Profile updated successfully"); // Set success message
 
-        // Reset the success message after a delay (e.g., 3 seconds)
+        // Reset the success message after a delay
         setTimeout(() => {
           setSuccessMessage(null);
-        }, 3000); // Adjust the delay as needed (e.g., 3000 milliseconds = 3 seconds)
+        }, 3000); // Adjust the delay
       })
       .catch((error) => {
         // Handle error
         console.error("Error updating profile", error);
-        // You can add code to handle errors, e.g., show an error message.
       });
   };
 

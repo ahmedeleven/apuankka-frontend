@@ -22,7 +22,6 @@ function useCurrentUserData() {
         .get(`current_user/`)
         .then((response) => {
           setCurrentUserData(response.data);
-          console.log(response.data);
         })
         .catch((error) => {
           console.error("Cannot get user data:", error);

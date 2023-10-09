@@ -36,8 +36,8 @@ const Register = ({ setIsLoggedIn }) => {
         setIsLoggedIn(true);
 
         Cookies.set("token", token, { expires: 7 }); // 'expires' defines the cookie's expiration in days
-        Cookies.set("username", username, { expires: 7 }); // 'expires' defines the cookie's expiration in days
-        Cookies.set("user_id", user_id, { expires: 7 }); // 'expires' defines the cookie's expiration in days
+        Cookies.set("username", username, { expires: 7 });
+        Cookies.set("user_id", user_id, { expires: 7 });
         navigate("/");
       })
       .catch((error) => {
@@ -60,7 +60,7 @@ const Register = ({ setIsLoggedIn }) => {
               <form>
                 <div className="mb-3 input-group">
                   <span className="input-group-text">
-                    <i className="bi bi-person"></i> {/* User icon */}
+                    <i className="bi bi-person"></i>
                   </span>
                   <input
                     type="text"
@@ -74,7 +74,7 @@ const Register = ({ setIsLoggedIn }) => {
 
                 <div className="mb-3 input-group">
                   <span className="input-group-text">
-                    <i className="bi bi-lock"></i> {/* Lock icon */}
+                    <i className="bi bi-lock"></i>
                   </span>
                   <input
                     type="password"
@@ -88,7 +88,7 @@ const Register = ({ setIsLoggedIn }) => {
 
                 <div className="mb-3 input-group">
                   <span className="input-group-text">
-                    <i className="bi bi-envelope"></i> {/* Email icon */}
+                    <i className="bi bi-envelope"></i>
                   </span>
                   <input
                     type="text"

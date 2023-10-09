@@ -49,7 +49,6 @@ function ServicesItem() {
       .get(`interests/service/${service_id}/`)
       .then((response) => {
         setInterests(response.data);
-        console.log(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
