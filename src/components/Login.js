@@ -97,7 +97,7 @@ const Login = ({ setIsLoggedIn }) => {
 
                 <button
                   type="button"
-                  className="btn btn-primary btn-block mb-3"
+                  className="btn btn-primary-soft btn-block mb-3"
                   onClick={handleLogin}
                 >
                   Login

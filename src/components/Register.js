@@ -102,7 +102,7 @@ const Register = ({ setIsLoggedIn }) => {
 
                 <button
                   type="button"
-                  className="btn btn-primary btn-block mb-3"
+                  className="btn btn-primary-soft btn-block mb-3"
                   onClick={handleRegister}
                 >
                   Sign Up
