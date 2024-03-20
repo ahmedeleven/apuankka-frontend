@@ -2,7 +2,8 @@
 
 Apu Ankka is a web application frontend built with React. It allows users to request and provide simple services to each other while offering a small fee for the services rendered.
 
-![Apu Ankka Logo]
+![Apu Ankka Logo](public/favicon.ico)
+
 
 ## Table of Contents
 
